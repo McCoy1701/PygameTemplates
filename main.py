@@ -5,6 +5,7 @@ from src.debug import debug
 
 pygame.init()
 screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
+display = pygame.Surface((WIDTH, HEIGHT))
 clock = pygame.time.Clock()
 pygame.display.set_caption(TITLE)
 
@@ -15,7 +16,11 @@ def main():
             if event.type == pygame.QUIT:
                 exit()
 
-        screen.fill('cyan')
+        display.fill('cyan')
+
+        surf = pygame.transform.scale(display, (SCREEN_WIDTH, SCREEN_HEIGHT))
+        screen.blit(surf, (0, 0))
+
         pygame.display.update()
 
 if __name__ == '__main__':
